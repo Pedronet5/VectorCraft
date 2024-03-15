@@ -1,4 +1,18 @@
-﻿namespace VectorCraft
+﻿//Decide on the following aspects and write down the reasons for your decisions:
+//▪ Do you implement the 3D vector as a class or as a struct?
+//I implemented Vector3D as a class because it allows for more flexibility(e.g., inheritance, reference semantics) 
+//and aligns better with the typical use case of a vector library.
+
+//▪ Should a vector be immutable after it has been constructed or should it be possible to change the value of the components afterwards?
+//Immutability: The vector is immutable after construction to maintain consistency and prevent unexpected changes.
+
+//▪ How do check if two vectors are equal or unequal? Do you overload the operators for equality and inequality or not?
+//I overloaded the equality operator (==) to compare vectors based on their components.
+
+//▪ How do you compute the hashcode of a vector?
+//I combine the values X, Y, Z using a HashCode.Combine and this function return a hash of the combination
+
+namespace VectorCraft
 {
     public class Vector3D
     {
@@ -48,6 +62,7 @@
         {
             if (Math.Abs(scalar) < double.Epsilon)
                 throw new DivideByZeroException("Cannot divide by zero.");
+
             return new Vector3D(X / scalar, Y / scalar, Z / scalar);
         }
 

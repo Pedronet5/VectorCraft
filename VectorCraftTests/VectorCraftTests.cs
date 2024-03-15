@@ -1,38 +1,74 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace VectorCraft.Tests
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class VectorCraftTests
     {
-        [TestMethod]
-        public void TestVectorAddition()
+        public static IEnumerable<object[]> GetAdditionTestData()
+        {
+            yield return new object[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 7.0, 9.0 };
+            yield return new object[] { -1.0, 2.0, -3.0, 4.0, -5.0, 6.0, 3.0, -3.0, 3.0 };
+        }
+
+        public static IEnumerable<object[]> GetSubtractionTestData()
+        {
+            yield return new object[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, -3.0, -3.0, -3.0 };
+            yield return new object[] { -1.0, 2.0, -3.0, 4.0, -5.0, 6.0, -5.0, 7.0, -9.0 };
+        }
+
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetAdditionTestData), DynamicDataSourceType.Method)]
+        public void TestVectorAddition(
+            double x1,
+            double y1,
+            double z1,
+            double x2,
+            double y2,
+            double z2,
+            double expectedX,
+            double expectedY,
+            double expectedZ)
         {
             // Arrange
-            var vector1 = new Vector3D(1, 2, 3);
-            var vector2 = new Vector3D(4, 5, 6);
+            var vector1 = new Vector3D(x1, y1, z1);
+            var vector2 = new Vector3D(x2, y2, z2);
 
             // Act
             var result = vector1.Add(vector2);
 
             // Assert
-            Assert.AreEqual(5, result.X);
-            Assert.AreEqual(7, result.Y);
-            Assert.AreEqual(9, result.Z);
+            Assert.AreEqual(expectedX, result.X, 1e-6);
+            Assert.AreEqual(expectedY, result.Y, 1e-6);
+            Assert.AreEqual(expectedZ, result.Z, 1e-6);
         }
 
-        [TestMethod]
-        public void TestVectorSubtraction()
+        [DataTestMethod]
+        [DynamicData(nameof(GetSubtractionTestData), DynamicDataSourceType.Method)]
+        public void TestVectorSubtraction(
+            double x1,
+            double y1,
+            double z1,
+            double x2,
+            double y2,
+            double z2,
+            double expectedX,
+            double expectedY,
+            double expectedZ)
         {
             // Arrange
-            var vector1 = new Vector3D(4, 5, 6);
-            var vector2 = new Vector3D(1, 2, 3);
+            var vector1 = new Vector3D(x1, y1, z1);
+            var vector2 = new Vector3D(x2, y2, z2);
 
             // Act
             var result = vector1.Subtract(vector2);
 
             // Assert
-            Assert.AreEqual(3, result.X);
-            Assert.AreEqual(3, result.Y);
-            Assert.AreEqual(3, result.Z);
+            Assert.AreEqual(expectedX, result.X, 1e-6); // Using epsilon for floating-point comparison
+            Assert.AreEqual(expectedY, result.Y, 1e-6); // Using epsilon for floating-point comparison
+            Assert.AreEqual(expectedZ, result.Z, 1e-6); // Using epsilon for floating-point comparison
         }
 
         [TestMethod]
