@@ -1,4 +1,3 @@
-VectorCraft
 VectorCraft is a WPF application that allows users to create and manipulate vector graphics. It leverages a class library for core functionality and includes unit tests using MSTest.
 
 Features
