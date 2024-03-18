@@ -1,7 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace VectorCraft.Tests
 {
+    using System.Diagnostics.CodeAnalysis;
+
     [TestClass]
     [ExcludeFromCodeCoverage]
     public class VectorCraftTests

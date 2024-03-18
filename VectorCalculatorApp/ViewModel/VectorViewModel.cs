@@ -16,7 +16,7 @@
             ComputeCrossProductCommand = new DelegateCommand(ComputeCrossProduct, CanComputeCrossProduct);
         }
 
-        #region Propertys
+        #region Properties
 
         private string? _vector1X;
 
@@ -129,7 +129,6 @@
             }
         }
 
-        // get/set my error message
         public string ErrorMessage
         {
             get => _errorMessage;
@@ -146,7 +145,7 @@
         public event PropertyChangedEventHandler? PropertyChanged;
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
-        #endregion Propertys
+        #endregion Properties
 
         public void ComputeCrossProduct()
         {
@@ -166,48 +165,44 @@
             // Validate each input property individually
             if (!double.TryParse(Vector1X, out _))
             {
-                // Set an error message (you can bind this to UI for display)
-                ErrorMessage = "Invalid input for Vector 1 X. Enter a valid number.";
+                // Set an error message
+                ErrorMessage = "Invalid input for Vector 1X. Enter a valid number.";
                 return false;
             }
 
             if (!double.TryParse(Vector1Y, out _))
             {
-                // Set an error message (you can bind this to UI for display)
-                ErrorMessage = "Invalid input for Vector 1 Y. Enter a valid number.";
+                ErrorMessage = "Invalid input for Vector 1Y. Enter a valid number.";
                 return false;
             }
 
             if (!double.TryParse(Vector1Z, out _))
             {
-                // Set an error message (you can bind this to UI for display)
-                ErrorMessage = "Invalid input for Vector 1 Z. Enter a valid number.";
+                ErrorMessage = "Invalid input for Vector 1Z. Enter a valid number.";
                 return false;
             }
 
             if (!double.TryParse(Vector2X, out _))
             {
-                // Set an error message (you can bind this to UI for display)
-                ErrorMessage = "Invalid input for Vector 2 X. Enter a valid number.";
+                ErrorMessage = "Invalid input for Vector 2X. Enter a valid number.";
                 return false;
             }
 
             if (!double.TryParse(Vector2Y, out _))
             {
-                // Set an error message (you can bind this to UI for display)
-                ErrorMessage = "Invalid input for Vector 2 Y. Enter a valid number.";
+                ErrorMessage = "Invalid input for Vector 2Y. Enter a valid number.";
                 return false;
             }
 
             if (!double.TryParse(Vector2Z, out _))
             {
-                // Set an error message (you can bind this to UI for display)
-                ErrorMessage = "Invalid input for Vector 2 Z. Enter a valid number.";
+                ErrorMessage = "Invalid input for Vector 2Z. Enter a valid number.";
                 return false;
             }
 
             // If all validations pass, clean message error and return true
             ErrorMessage = "";
+
             return true;
         }
 
