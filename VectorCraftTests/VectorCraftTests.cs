@@ -173,5 +173,67 @@ namespace VectorCraft.Tests
             // Assert
             Assert.AreEqual(hashCode1, hashCode2);
         }
+
+        [TestMethod]
+        public void Divide_ByNonZeroScalar_ReturnsCorrectResult()
+        {
+            // Arrange
+            var vector = new Vector3D(3, 6, 9);
+            double scalar = 2;
+
+            // Act
+            var result = vector.Divide(scalar);
+
+            // Assert
+            Assert.AreEqual(1.5, result.X, 0.01); // Tolerance for rounding
+            Assert.AreEqual(3, result.Y, 0.01);
+            Assert.AreEqual(4.5, result.Z, 0.01);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void Divide_ByZero_ThrowsException()
+        {
+            // Arrange
+            var vector = new Vector3D(1, 2, 3);
+            double scalar = 0;
+
+            // Act
+            var result = vector.Divide(scalar);
+
+            // Assert (Exception is expected)
+        }
+
+        [TestMethod]
+        public void Create_ReturnsVectorWithGivenComponents()
+        {
+            // Arrange
+            double x = 1.5;
+            double y = 2.0;
+            double z = -3.7;
+
+            // Act
+            var result = Vector3D.Create(x, y, z);
+
+            // Assert
+            Assert.AreEqual(x, result.X, 0.01); // Tolerance for rounding
+            Assert.AreEqual(y, result.Y, 0.01);
+            Assert.AreEqual(z, result.Z, 0.01);
+        }
+
+        [TestMethod]
+        public void Negate_ReturnsNegatedVector()
+        {
+            // Arrange
+            var vector = new Vector3D(2, -4, 6);
+
+            // Act
+            var result = vector.Negate();
+
+            // Assert
+            Assert.AreEqual(-2, result.X, 0.01); // Tolerance for rounding
+            Assert.AreEqual(4, result.Y, 0.01);
+            Assert.AreEqual(-6, result.Z, 0.01);
+        }
     }
 }
