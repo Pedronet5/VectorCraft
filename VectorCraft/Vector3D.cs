@@ -76,9 +76,9 @@ namespace VectorCraft
         public Vector3D CrossProduct(Vector3D v)
         {
             return new Vector3D(
-                Y * v.Z - Z * v.Y,
-                Z * v.X - X * v.Z,
-                X * v.Y - Y * v.X);
+                Math.Round(Y * v.Z - Z * v.Y, 2),
+                Math.Round(Z * v.X - X * v.Z, 2),
+                Math.Round(X * v.Y - Y * v.X, 2));
         }
 
         // Length of a vector
