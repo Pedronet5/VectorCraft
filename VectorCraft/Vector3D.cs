@@ -1,10 +1,9 @@
 ﻿//Decide on the following aspects and write down the reasons for your decisions:
 //▪ Do you implement the 3D vector as a class or as a struct?
-//I implemented Vector3D as a class because it allows for more flexibility(e.g., inheritance, reference semantics) 
-//and aligns better with the typical use case of a vector library.
+//I implemented Vector3D as a class because it allows for more flexibility(e.g., inheritance, reference semantics) and aligns better with the typical use case of a vector library.
 
 //▪ Should a vector be immutable after it has been constructed or should it be possible to change the value of the components afterwards?
-//Immutability: The vector is immutable after construction to maintain consistency and prevent unexpected changes.
+//The vector is immutable after construction to maintain consistency and prevent unexpected changes.
 
 //▪ How do check if two vectors are equal or unequal? Do you overload the operators for equality and inequality or not?
 //I overloaded the equality operator (==) to compare vectors based on their components.
@@ -42,19 +41,19 @@ namespace VectorCraft
         // Addition of two vectors
         public Vector3D Add(Vector3D v)
         {
-            return new Vector3D(X + v.X, Y + v.Y, Z + v.Z);
+            return new Vector3D(Math.Round(X + v.X, 2), Math.Round(Y + v.Y, 2), Math.Round(Z + v.Z, 2));
         }
 
         // Subtraction of two vectors
         public Vector3D Subtract(Vector3D v)
         {
-            return new Vector3D(X - v.X, Y - v.Y, Z - v.Z);
+            return new Vector3D(Math.Round(X - v.X, 2), Math.Round(Y - v.Y, 2), Math.Round(Z - v.Z, 2));
         }
 
         // Multiplication of a vector with a scalar
         public Vector3D Multiply(double scalar)
         {
-            return new Vector3D(X * scalar, Y * scalar, Z * scalar);
+            return new Vector3D(Math.Round(X * scalar, 2), Math.Round(Y * scalar, 2), Math.Round(Z * scalar, 2));
         }
 
         // Division of a vector by a scalar
@@ -63,7 +62,7 @@ namespace VectorCraft
             if (Math.Abs(scalar) < double.Epsilon)
                 throw new DivideByZeroException("Cannot divide by zero.");
 
-            return new Vector3D(X / scalar, Y / scalar, Z / scalar);
+            return new Vector3D(Math.Round(X / scalar, 2), Math.Round(Y / scalar, 2), Math.Round(Z / scalar, 2));
         }
 
         // Dot product of two vectors

@@ -18,25 +18,84 @@
         <Label x:Name="lblZ3" Content="Z:" HorizontalAlignment="Left" Margin="1,137,0,0" VerticalAlignment="Top"/>
         <StackPanel Margin="20">
             <TextBlock Text="Enter Vector 1 (X, Y, Z):"/>
-            <TextBox x:Name="txtVector1X" Text="{Binding Vector1X}"/>
-            <TextBox x:Name="txtVector1Y" Text="{Binding Vector1Y}"/>
-            <TextBox x:Name="txtVector1Z" Text="{Binding Vector1Z}"/>
-
+            <TextBox x:Name="txtVector1X" Text="{Binding Vector1X, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding (Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txtVector1Y" Text="{Binding Vector1Y, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding (Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txtVector1Z" Text="{Binding Vector1Z, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding (Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
             <TextBlock Text="Enter Vector 2 (X, Y, Z):"/>
-            <TextBox x:Name="txtVector2X" Text="{Binding Vector2X}"/>
-            <TextBox x:Name="txtVector2Y" Text="{Binding Vector2Y}"/>
-            <TextBox x:Name="txtVector2Z" Text="{Binding Vector2Z}"/>
-
-            <Button Content="Compute Cross Product" Click="ComputeCrossProduct_Click"/>
+            <TextBox x:Name="txtVector2X" Text="{Binding Vector2X, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding (Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txtVector2Y" Text="{Binding Vector2Y, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding (Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="txtVector2Z" Text="{Binding Vector2Z, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding (Validation.Errors)[0].ErrorContent}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button Content="Compute Cross Product" Command="{Binding ComputeCrossProductCommand}"/>
             <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center">
                 <TextBlock.Text>
-                    <MultiBinding StringFormat="{}Result:( {0}, {1}, {2})">
+                    <MultiBinding StringFormat="{}Result: ({0}, {1}, {2})">
                         <Binding Path="CrossProductResult.X" />
                         <Binding Path="CrossProductResult.Y" />
                         <Binding Path="CrossProductResult.Z" />
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
+            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" />
         </StackPanel>
     </Grid>
 </Window>
