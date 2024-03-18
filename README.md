@@ -3,7 +3,6 @@ VectorCraft is a WPF application that allows users to create and manipulate vect
 
 Features
 Vector Creation: Users can create custom vector shapes, lines, and curves.
-
 Installation
 Prerequisites:
 Ensure you have .NET 8 SDK installed.
@@ -16,7 +15,6 @@ Build and Run:
 Open the solution in Visual Studio.
 Build the solution (Ctrl + Shift + B).
 Run the WPF application (F5).
-
 Usage
 Compute the cross product of two 3D vectors.
 
