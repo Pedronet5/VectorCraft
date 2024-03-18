@@ -95,7 +95,7 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" />
+            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>
 </Window>
