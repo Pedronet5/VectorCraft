@@ -23,8 +23,8 @@ Install Visual Studio 2022 or later.
 ## Unit Tests
 VectorCraft library includes unit tests written using MSTest. To run the tests:
 
-Open the Test Explorer (Test > Windows > Test Explorer).
-Click “Run All” to execute the tests.
+1. Open the Test Explorer (Test > Windows > Test Explorer).
+2. Click “Run All” to execute the tests.
 
 ## Getting Started
 Clone this repository and open it in Visual Studio to start development.
