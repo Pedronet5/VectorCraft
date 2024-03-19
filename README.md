@@ -11,8 +11,8 @@ The aim of this project is to develop a library for the algebra of 3D vectors. T
 All three components are combined into a single Visual Studio project (solution).
 
 ## Specifications
-Ensure you have .NET 8 SDK installed.
-Install Visual Studio 2022 or later.
+1. Ensure you have .NET 8 SDK installed.
+2. Install Visual Studio 2022 or later.
 
 ## Build and Run:
 1. Open the solution in Visual Studio.
