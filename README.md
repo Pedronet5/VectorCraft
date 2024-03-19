@@ -15,14 +15,13 @@ Ensure you have .NET 8 SDK installed.
 Install Visual Studio 2022 or later.
 
 ## Build and Run:
-Open the solution in Visual Studio.
-Build the solution (Ctrl + Shift + B).
-Run the WPF application (F5).
-Usage
-Compute the cross product of two 3D vectors.
+1. Open the solution in Visual Studio.
+2. Build the solution (Ctrl + Shift + B).
+3. Run the WPF application (F5).
+4. Compute the cross product of two 3D vectors.
 
 ## Unit Tests
-VectorCraft includes unit tests written using MSTest. To run the tests:
+VectorCraft library includes unit tests written using MSTest. To run the tests:
 
 Open the Test Explorer (Test > Windows > Test Explorer).
 Click “Run All” to execute the tests.
