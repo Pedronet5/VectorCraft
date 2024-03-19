@@ -1,24 +1,32 @@
-VectorCraft is a WPF application that allows users to create and manipulate vector graphics. It leverages a class library for core functionality and includes unit tests using MSTest.
+# VectorCraft
+VectorCraft is a library developed for performing algebraic operations on 3D vectors using C# and the .NET framework.
 
-Features
-Vector Creation: Users can create custom vector shapes, lines, and curves.
-Installation
-Prerequisites:
+## Features
+The aim of this project is to develop a library for the algebra of 3D vectors. The task consists of three parts:
+
+1. **Class Library**: Implement a class library for the algebraic operations of 3D vectors.
+2. **Unit Test Project**: Develop unit tests to ensure the reliability and accuracy of the class library.
+3. **WPF Desktop Application**: Create an application that utilizes the class library to compute the cross product of two 3D vectors.
+
+All three components are combined into a single Visual Studio project (solution).
+
+## Specifications
 Ensure you have .NET 8 SDK installed.
 Install Visual Studio 2022 or later.
 
-Clone the Repository:
-git clone https://github.com/Pedronet5/VectorCraft.git
-
-Build and Run:
+## Build and Run:
 Open the solution in Visual Studio.
 Build the solution (Ctrl + Shift + B).
 Run the WPF application (F5).
 Usage
 Compute the cross product of two 3D vectors.
 
-Unit Tests
+## Unit Tests
 VectorCraft includes unit tests written using MSTest. To run the tests:
 
 Open the Test Explorer (Test > Windows > Test Explorer).
 Click “Run All” to execute the tests.
+
+## Getting Started
+Clone this repository and open it in Visual Studio to start development.
+git clone https://github.com/Pedronet5/VectorCraft.git
