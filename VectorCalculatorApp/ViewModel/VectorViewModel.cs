@@ -8,17 +8,24 @@
 
     public class VectorViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
     {
-        private string? _errorMessage;
         public DelegateCommand ComputeCrossProductCommand { get; }
 
         public VectorViewModel()
         {
+            _vector1X = "";
+            _vector1Y = "";
+            _vector1Z = "";
+            _vector2X = "";
+            _vector2Y = "";
+            _vector2Z = "";
+            _errorMessage = "";
+            _crossProductResult = new Vector3D(0,0,0);
             ComputeCrossProductCommand = new DelegateCommand(ComputeCrossProduct, CanComputeCrossProduct);
         }
 
         #region Properties
 
-        private string? _vector1X;
+        private string _vector1X;
 
         public string Vector1X
         {
@@ -34,7 +41,7 @@
             }
         }
 
-        private string? _vector1Y;
+        private string _vector1Y;
 
         public string Vector1Y
         {
@@ -50,7 +57,7 @@
             }
         }
 
-        private string? _vector1Z;
+        private string _vector1Z;
 
         public string Vector1Z
         {
@@ -66,7 +73,7 @@
             }
         }
 
-        private string? _vector2X;
+        private string _vector2X;
 
         public string Vector2X
         {
@@ -82,7 +89,7 @@
             }
         }
 
-        private string? _vector2Y;
+        private string _vector2Y;
 
         public string Vector2Y
         {
@@ -98,7 +105,7 @@
             }
         }
 
-        private string? _vector2Z;
+        private string _vector2Z;
 
         public string Vector2Z
         {
@@ -114,7 +121,7 @@
             }
         }
 
-        private Vector3D? _crossProductResult;
+        private Vector3D _crossProductResult;
 
         public Vector3D CrossProductResult
         {
@@ -128,6 +135,8 @@
                 }
             }
         }
+
+        private string _errorMessage;
 
         public string ErrorMessage
         {
