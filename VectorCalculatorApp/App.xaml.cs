@@ -4,6 +4,7 @@
     using System.Windows;
     using ViewModel;
     using VectorCraft;
+    using VectorCalculatorApp.Views;
 
     /// <summary>
     /// Interaction logic for App.xaml
@@ -32,7 +33,11 @@
         private void OnStartup(object sender, StartupEventArgs e)
         {
             var mainWindow = serviceProvider.GetService<MainWindow>();
-            mainWindow.Show();
+            
+            if (mainWindow != null)
+            {
+                mainWindow.Show();
+            }
         }
     }
 }
