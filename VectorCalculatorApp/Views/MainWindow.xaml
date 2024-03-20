@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:VectorCalculatorApp.ViewModel"
         mc:Ignorable="d"
         Title="Vector Calculator" Height="300" Width="400">
-    <Window.DataContext>
-        <local:VectorViewModel/>
-    </Window.DataContext>
     <Grid>
         <Label x:Name="lblX" Content="X:" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblY" Content="Y:" HorizontalAlignment="Left" Margin="0,51,0,0" VerticalAlignment="Top"/>

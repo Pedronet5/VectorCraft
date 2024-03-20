@@ -6,6 +6,13 @@ namespace VectorCraft.Tests
     [ExcludeFromCodeCoverage]
     public class VectorCraftTests
     {
+        private readonly IVector3D vector3D;
+
+        public VectorCraftTests()
+        {
+            this.vector3D = new Vector3D();
+        }
+
         public static IEnumerable<object[]> GetAdditionTestData()
         {
             yield return new object[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 7.0, 9.0 };
@@ -37,7 +44,7 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(x2, y2, z2);
 
             // Act
-            var result = vector1.Add(vector2);
+            var result = this.vector3D.Add(vector1, vector2);
 
             // Assert
             Assert.AreEqual(expectedX, result.X, 1e-6);
@@ -63,7 +70,7 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(x2, y2, z2);
 
             // Act
-            var result = vector1.Subtract(vector2);
+            var result = this.vector3D.Subtract(vector1, vector2);
 
             // Assert
             Assert.AreEqual(expectedX, result.X, 1e-6); // Using epsilon for floating-point comparison
@@ -79,7 +86,7 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(0, 1, 0);
 
             // Act
-            var result = vector1.CrossProduct(vector2);
+            var result = this.vector3D.CrossProduct(vector1, vector2);
 
             // Assert
             Assert.AreEqual(0, result.X);
@@ -94,7 +101,7 @@ namespace VectorCraft.Tests
             var vector = new Vector3D(3, 4, 12);
 
             // Act
-            var length = vector.Length();
+            var length = this.vector3D.Length(vector);
 
             // Assert
             Assert.AreEqual(13, length, 1e-6); // Using epsilon for floating-point comparison
@@ -108,7 +115,7 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(4, 5, 6);
 
             // Act
-            var dotProduct = vector1.DotProduct(vector2);
+            var dotProduct = this.vector3D.DotProduct(vector1, vector2);
 
             // Assert
             Assert.AreEqual(32, dotProduct);
@@ -122,7 +129,7 @@ namespace VectorCraft.Tests
             var scalar = 5;
 
             // Act
-            var result = vector.Multiply(scalar);
+            var result = this.vector3D.Multiply(vector, scalar);
 
             // Assert
             Assert.AreEqual(10, result.X);
@@ -138,7 +145,7 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(0, 1, 0);
 
             // Act
-            var angle = vector1.AngleBetween(vector2);
+            var angle = this.vector3D.AngleBetween(vector1, vector2);
 
             // Assert
             Assert.AreEqual(Math.PI / 2, angle, 1e-6); // Using epsilon for floating-point comparison
@@ -153,7 +160,7 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(2, 3, 4);
 
             // Act
-            var areEqual = vector1.Equals(vector2);
+            var areEqual = this.vector3D.Equals(vector1, vector2);
 
             // Assert
             Assert.IsTrue(areEqual);
@@ -167,8 +174,8 @@ namespace VectorCraft.Tests
             var vector2 = new Vector3D(2, 3, 4);
 
             // Act
-            var hashCode1 = vector1.GetHashCode();
-            var hashCode2 = vector2.GetHashCode();
+            var hashCode1 = this.vector3D.GetHashCode(vector1);
+            var hashCode2 = this.vector3D.GetHashCode(vector2);
 
             // Assert
             Assert.AreEqual(hashCode1, hashCode2);
@@ -182,7 +189,7 @@ namespace VectorCraft.Tests
             double scalar = 2;
 
             // Act
-            var result = vector.Divide(scalar);
+            var result = this.vector3D.Divide(vector, scalar);
 
             // Assert
             Assert.AreEqual(1.5, result.X, 0.01); // Tolerance for rounding
@@ -199,7 +206,7 @@ namespace VectorCraft.Tests
             double scalar = 0;
 
             // Act
-            var result = vector.Divide(scalar);
+            var result = this.vector3D.Divide(vector, scalar);
 
             // Assert (Exception is expected)
         }
@@ -213,7 +220,7 @@ namespace VectorCraft.Tests
             double z = -3.7;
 
             // Act
-            var result = Vector3D.Create(x, y, z);
+            var result = this.vector3D.Create(x, y, z);
 
             // Assert
             Assert.AreEqual(x, result.X, 0.01); // Tolerance for rounding
@@ -228,7 +235,7 @@ namespace VectorCraft.Tests
             var vector = new Vector3D(2, -4, 6);
 
             // Act
-            var result = vector.Negate();
+            var result = this.vector3D.Negate(vector);
 
             // Assert
             Assert.AreEqual(-2, result.X, 0.01); // Tolerance for rounding
