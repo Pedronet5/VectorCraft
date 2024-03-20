@@ -8,9 +8,9 @@ namespace VectorCraft.Tests
     {
         private readonly IVector3D vector3D;
 
-        public VectorCraftTests(IVector3D vector3D)
+        public VectorCraftTests()
         {
-            this.vector3D = vector3D;
+            this.vector3D = new Vector3D();
         }
 
         public static IEnumerable<object[]> GetAdditionTestData()

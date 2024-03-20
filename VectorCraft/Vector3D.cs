@@ -19,6 +19,7 @@ namespace VectorCraft
         public double Y { get; }
         public double Z { get; }
 
+        public Vector3D(){}
         public Vector3D(double x, double y, double z)
         {
             X = x;
@@ -41,19 +42,25 @@ namespace VectorCraft
         // Addition of two vectors
         public Vector3D Add(Vector3D vector1, Vector3D vector2)
         {
-            return new Vector3D(Math.Round(vector1.X + vector2.X, 2), Math.Round(vector1.Y + vector2.Y, 2), Math.Round(vector1.Z + vector2.Z, 2));
+            return new Vector3D(Math.Round(vector1.X + vector2.X, 2), 
+                                Math.Round(vector1.Y + vector2.Y, 2), 
+                                Math.Round(vector1.Z + vector2.Z, 2));
         }
 
         // Subtraction of two vectors
         public Vector3D Subtract(Vector3D vector1, Vector3D vector2)
         {
-            return new Vector3D(Math.Round(vector1.X - vector2.X, 2), Math.Round(vector1.Y - vector2.Y, 2), Math.Round(vector1.Z - vector2.Z, 2));
+            return new Vector3D(Math.Round(vector1.X - vector2.X, 2), 
+                                Math.Round(vector1.Y - vector2.Y, 2), 
+                                Math.Round(vector1.Z - vector2.Z, 2));
         }
 
         // Multiplication of a vector with a scalar
         public Vector3D Multiply(Vector3D vector, double scalar)
         {
-            return new Vector3D(Math.Round(vector.X * scalar, 2), Math.Round(vector.Y * scalar, 2), Math.Round(vector.Z * scalar, 2));
+            return new Vector3D(Math.Round(vector.X * scalar, 2), 
+                                Math.Round(vector.Y * scalar, 2), 
+                                Math.Round(vector.Z * scalar, 2));
         }
 
         // Division of a vector by a scalar
@@ -62,7 +69,9 @@ namespace VectorCraft
             if (Math.Abs(scalar) < double.Epsilon)
                 throw new DivideByZeroException("Cannot divide by zero.");
 
-            return new Vector3D(Math.Round(vector.X / scalar, 2), Math.Round(vector.Y / scalar, 2), Math.Round(vector.Z / scalar, 2));
+            return new Vector3D(Math.Round(vector.X / scalar, 2), 
+                                Math.Round(vector.Y / scalar, 2), 
+                                Math.Round(vector.Z / scalar, 2));
         }
 
         // Dot product of two vectors

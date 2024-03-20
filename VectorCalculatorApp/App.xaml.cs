@@ -1,8 +1,6 @@
 ﻿namespace VectorCalculatorApp
 {
     using Microsoft.Extensions.DependencyInjection;
-    using System.Configuration;
-    using System.Data;
     using System.Windows;
     using ViewModel;
     using VectorCraft;
@@ -23,6 +21,7 @@
  
         private void ConfigureServices(ServiceCollection services)
         {
+            services.AddTransient<IVector3D, Vector3D>();
             services.AddSingleton(s => new VectorViewModel(s.GetRequiredService<IVector3D>()));
             services.AddSingleton(s => new MainWindow()
             {
