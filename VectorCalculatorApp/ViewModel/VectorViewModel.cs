@@ -9,9 +9,11 @@
     public class VectorViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         public DelegateCommand ComputeCrossProductCommand { get; }
+        private readonly IVector3D vector3D;
 
-        public VectorViewModel()
+        public VectorViewModel(IVector3D vector3D)
         {
+            this.vector3D = vector3D;
             _vector1X = "";
             _vector1Y = "";
             _vector1Z = "";
@@ -166,7 +168,7 @@
             var vector1 = new Vector3D(double.Parse(Vector1X), double.Parse(Vector1Y), double.Parse(Vector1Z));
             var vector2 = new Vector3D(double.Parse(Vector2X), double.Parse(Vector2Y), double.Parse(Vector2Z));
 
-            CrossProductResult = vector1.CrossProduct(vector2);
+            CrossProductResult = this.vector3D.CrossProduct(vector1, vector2);
         }
 
         private bool ValidateInput()

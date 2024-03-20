@@ -1,8 +1,6 @@
 ﻿namespace VectorCalculatorApp
 {
     using System.Windows;
-    using VectorCalculatorApp.ViewModel;
-
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -12,7 +10,6 @@
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new VectorViewModel(); // Set ViewModel as DataContext
         }
     }
 }

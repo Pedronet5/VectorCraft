@@ -13,7 +13,7 @@
 
 namespace VectorCraft
 {
-    public class Vector3D
+    public class Vector3D : IVector3D
     {
         public double X { get; }
         public double Y { get; }
@@ -27,85 +27,85 @@ namespace VectorCraft
         }
 
         // Create a vector with given components
-        public static Vector3D Create(double x, double y, double z)
+        public Vector3D Create(double x, double y, double z)
         {
             return new Vector3D(x, y, z);
         }
 
         // Reverse/negate a vector
-        public Vector3D Negate()
+        public Vector3D Negate(Vector3D vector)
         {
-            return new Vector3D(-X, -Y, -Z);
+            return new Vector3D(-vector.X, -vector.Y, -vector.Z);
         }
 
         // Addition of two vectors
-        public Vector3D Add(Vector3D v)
+        public Vector3D Add(Vector3D vector1, Vector3D vector2)
         {
-            return new Vector3D(Math.Round(X + v.X, 2), Math.Round(Y + v.Y, 2), Math.Round(Z + v.Z, 2));
+            return new Vector3D(Math.Round(vector1.X + vector2.X, 2), Math.Round(vector1.Y + vector2.Y, 2), Math.Round(vector1.Z + vector2.Z, 2));
         }
 
         // Subtraction of two vectors
-        public Vector3D Subtract(Vector3D v)
+        public Vector3D Subtract(Vector3D vector1, Vector3D vector2)
         {
-            return new Vector3D(Math.Round(X - v.X, 2), Math.Round(Y - v.Y, 2), Math.Round(Z - v.Z, 2));
+            return new Vector3D(Math.Round(vector1.X - vector2.X, 2), Math.Round(vector1.Y - vector2.Y, 2), Math.Round(vector1.Z - vector2.Z, 2));
         }
 
         // Multiplication of a vector with a scalar
-        public Vector3D Multiply(double scalar)
+        public Vector3D Multiply(Vector3D vector, double scalar)
         {
-            return new Vector3D(Math.Round(X * scalar, 2), Math.Round(Y * scalar, 2), Math.Round(Z * scalar, 2));
+            return new Vector3D(Math.Round(vector.X * scalar, 2), Math.Round(vector.Y * scalar, 2), Math.Round(vector.Z * scalar, 2));
         }
 
         // Division of a vector by a scalar
-        public Vector3D Divide(double scalar)
+        public Vector3D Divide(Vector3D vector, double scalar)
         {
             if (Math.Abs(scalar) < double.Epsilon)
                 throw new DivideByZeroException("Cannot divide by zero.");
 
-            return new Vector3D(Math.Round(X / scalar, 2), Math.Round(Y / scalar, 2), Math.Round(Z / scalar, 2));
+            return new Vector3D(Math.Round(vector.X / scalar, 2), Math.Round(vector.Y / scalar, 2), Math.Round(vector.Z / scalar, 2));
         }
 
         // Dot product of two vectors
-        public double DotProduct(Vector3D v)
+        public double DotProduct(Vector3D vector1, Vector3D vector2)
         {
-            return X * v.X + Y * v.Y + Z * v.Z;
+            return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
         }
 
         // Cross product of two vectors
-        public Vector3D CrossProduct(Vector3D v)
+        public Vector3D CrossProduct(Vector3D vector1, Vector3D vector2)
         {
             return new Vector3D(
-                Math.Round(Y * v.Z - Z * v.Y, 2),
-                Math.Round(Z * v.X - X * v.Z, 2),
-                Math.Round(X * v.Y - Y * v.X, 2));
+                Math.Round(vector1.Y * vector2.Z - vector1.Z * vector2.Y, 2),
+                Math.Round(vector1.Z * vector2.X - vector1.X * vector2.Z, 2),
+                Math.Round(vector1.X * vector2.Y - vector1.Y * vector2.X, 2));
         }
 
         // Length of a vector
-        public double Length()
+        public double Length(Vector3D vector)
         {
-            return Math.Sqrt(X * X + Y * Y + Z * Z);
+            return Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z);
         }
 
         // Angle between two vectors (in radians)
-        public double AngleBetween(Vector3D v)
+        public double AngleBetween(Vector3D vector1, Vector3D vector2)
         {
-            double dotProduct = DotProduct(v);
-            double lengthProduct = Length() * v.Length();
+            double dotProduct = DotProduct(vector1, vector2);
+            double lengthProduct = Length(vector1) * Length(vector2);
             return Math.Acos(dotProduct / lengthProduct);
         }
 
         // Equality check for vectors
-        public bool Equals(Vector3D v)
+        public bool Equals(Vector3D vector1, Vector3D vector2)
         {
-            return Math.Abs(X - v.X) < double.Epsilon &&
-                   Math.Abs(Y - v.Y) < double.Epsilon &&
-                   Math.Abs(Z - v.Z) < double.Epsilon;
+            return Math.Abs(vector1.X - vector2.X) < double.Epsilon &&
+                   Math.Abs(vector1.Y - vector2.Y) < double.Epsilon &&
+                   Math.Abs(vector1.Z - vector2.Z) < double.Epsilon;
         }
 
         // Hash code for the vector
-        public override int GetHashCode()
+        public int GetHashCode(Vector3D vector)
         {
-            return HashCode.Combine(X, Y, Z);
+            return HashCode.Combine(vector.X, vector.Y, vector.Z);
         }
     }
 }
